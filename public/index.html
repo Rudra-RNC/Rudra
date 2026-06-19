@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rudra Kumar — Portfolio</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
   <meta name="description" content="Portfolio of Rudra Kumar" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="assets/favicon.svg" />
 </head>
 <body>
   <header class="site-header">
@@ -53,7 +53,7 @@
 
     async function loadProjects(){
       try{
-        const res = await fetch('/projects.json');
+        const res = await fetch('projects.json');
         const projects = await res.json();
         const grid = document.getElementById('projects-grid');
         if (!projects || projects.length === 0) {
