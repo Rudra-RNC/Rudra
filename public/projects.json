@@ -3,12 +3,12 @@
     "title": "Personal Portfolio",
     "description": "This very portfolio site showcasing projects and skills.",
     "link": "https://Rudra-RNC.github.io/Rudra/",
-    "image": "assets/avatar.png"
+    "image": "assets/avatar.svg"
   },
   {
     "title": "Sample Project",
     "description": "A sample project to demonstrate layout. Replace this with your real projects.",
     "link": "#",
-    "image": "assets/sample.png"
+    "image": "assets/sample.svg"
   }
 ]
