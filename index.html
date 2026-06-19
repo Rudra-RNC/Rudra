@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rudra Kumar — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Portfolio of Rudra Kumar" />
+  <link rel="icon" href="assets/favicon.svg" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">Rudra Kumar</h1>
+      <p class="tagline">Frontend developer &amp; software engineer</p>
+      <nav class="social">
+        <a href="https://github.com/Rudra-RNC" target="_blank" rel="noopener">GitHub</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about" class="card">
+      <h2>About</h2>
+      <p>Hello — I'm Rudra Kumar. I build web apps and beautiful, accessible frontends. This is a simple static portfolio you can edit in <code>public/</code> and push to update.</p>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <div id="projects-grid" class="grid">
+        <!-- Projects are populated from projects.json -->
+      </div>
+    </section>
+
+    <section id="skills" class="card">
+      <h2>Skills</h2>
+      <p>HTML • CSS • JavaScript • React • Accessibility • Responsive design</p>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>If you'd like to reach me, email: <a href="mailto:rudra@example.com">rudra@example.com</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Rudra Kumar</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    async function loadProjects(){
+      try{
+        const res = await fetch('projects.json');
+        const projects = await res.json();
+        const grid = document.getElementById('projects-grid');
+        if (!projects || projects.length === 0) {
+          grid.innerHTML = '<p>No projects yet — edit <code>public/projects.json</code> to add some.</p>';
+          return;
+        }
+        grid.innerHTML = projects.map(p => `
+          <article class="project">
+            ${p.image?`<img src="${p.image}" alt="${p.title} screenshot">`:''}
+            <h3><a href="${p.link || '#'}" target="_blank" rel="noopener">${p.title}</a></h3>
+            <p>${p.description}</p>
+          </article>
+        `).join('');
+      }catch(e){
+        document.getElementById('projects-grid').innerHTML = '<p>Could not load projects.json</p>';
+      }
+    }
+
+    loadProjects();
+  </script>
+</body>
+</html>
